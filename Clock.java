@@ -9,23 +9,25 @@ public class Clock {
 	private int giay;
 	
 	public Clock(){
-		gio = 00;
-		phut = 00;
-		giay = 00;
+		gio = 0;
+		phut = 0;
+		giay = 0;
 	}
 	
 	public Clock(int h, int m, int s){
-		gio = h;
-		phut = m;
-		giay = s;
+		this.gio = h;
+		this.phut = m;
+		this.giay = s;
 	}
 	
 	public void inPut(){
 		while(true){
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Nhap vao gio phut giay: ");
+			System.out.println("Nhap vao gio: ");
 			gio = sc.nextInt();
+			System.out.println("Nhap vao phut: ");
 			phut = sc.nextInt();
+			System.out.println("Nhap vao giay: ");
 			giay = sc.nextInt();
 			if(hopLe()){
 				break;
@@ -62,8 +64,7 @@ public class Clock {
 	
 	public Clock congPhut(int n){
 		Clock kq = new Clock(gio, phut, giay);
-		kq.phut = kq.phut +n;
-		roundUp();
+		kq.phut = kq.phut + n;
 		return kq;
 	}
 	
@@ -78,4 +79,5 @@ public class Clock {
 	public int gtGiay(){
 		return giay;
 	}
+
 }
