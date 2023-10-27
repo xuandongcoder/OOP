@@ -1,9 +1,11 @@
-package cit.ctu;
+package ctu.cit;
 
 import java.util.Scanner;
 
+
+import java.lang.Math;
+
 public class DuongTron{
-	private double Pi = 3.14;
 	private Diem tam;
 	private int bankinh;
 	public DuongTron(){
@@ -46,10 +48,10 @@ public class DuongTron{
 		tam = new Diem(tam.giaTriX()+dx, tam.giaTriY()+dy);
 	}
 	public double DienTich(){
-		return bankinh*bankinh*Pi;
+		return bankinh*bankinh*Math.PI;
 	}
 	public double ChuVi(){
-		return bankinh*2*Pi;
+		return bankinh*2*Math.PI;
 	}
 	public boolean trongDuongTron(Diem d){
 		return Math.sqrt(Math.pow(d.giaTriX() - tam.giaTriX(), 2) + Math.pow(d.giaTriY() - tam.giaTriY(),2)) <= bankinh;

@@ -1,11 +1,13 @@
-package cit.ctu;
+package ctu.cit;
+
+
 
 public class SDDuongTronHH {
 	public static void main(String[] args) {
 		Diem d1 = new Diem(2, 5);
-		DuongTronHH gc1 = new DuongTrongHH(dt1, 6, "den", "xanh");
+		DuongTronHH gc1 = new DuongTronHH(d1, 6, "den", "xanh");
 		gc1.hienthi();
-		DuongTronHH gc2 = new DuongTronHH;
+		DuongTronHH gc2 = new DuongTronHH();
 		gc2.nhap();
 		gc2.hienthi();
 		System.out.println("Chu vi cua duong tron gc2: "+ gc2.ChuVi());
@@ -23,4 +25,5 @@ public class SDDuongTronHH {
 		else {
 			System.out.println("gc1 khong bang gc2");
 		}
+	}
 }

@@ -1,4 +1,4 @@
-package cit.ctu;
+package ctu.cit;
 import java.util.Scanner;
 public class Diem {
 		// Khai bao thuoc tinh

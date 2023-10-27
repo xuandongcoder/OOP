@@ -1,12 +1,13 @@
-package cit.ctu;
-import java.util.Scannner;
+package ctu.cit;
+import java.util.Scanner;
+
+import cit.ctu.Diem;
 
 public class DuongTronHH extends DuongTron{
 	
 	private String maubien;
 	private String maunen;
-	public DuongTronHh(){
-		super();
+	public void DuongTronHh(){
 		maubien = null;
 		maunen = null;
 	}
@@ -25,7 +26,7 @@ public class DuongTronHH extends DuongTron{
 		this.maubien = dt.maubien;
 		this.maunen = dt.maunen;
 	}
-	public makeCopy(DuongTronHH d) {
+	public void makeCopy(DuongTronHH d) {
 		super.SaoChepSau(d);
 		maubien = d.maubien;
 		maunen = d.maunen;
