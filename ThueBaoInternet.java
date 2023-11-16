@@ -91,10 +91,12 @@ public class ThueBaoInternet implements Serializable {
 	}
 	
 	public boolean equals(ThueBaoInternet tb) {
-		if(this.tenTK == tb.tenTK && this.chuTB == tb.chuTB && this.diachi == tb.diachi && this.soID == tb.soID && this.ngaydk == tb.ngaydk && this.tocdo == tb.tocdo) {
-			return true;
-		}
-		else return false;
+		return this.tenTK.equals(tb.tenTK) &&
+		           this.chuTB.equals(tb.chuTB) &&
+		           this.diachi.equals(tb.diachi) &&
+		           this.soID.equals(tb.soID) &&
+		           this.ngaydk.equals(tb.ngaydk) &&
+		           this.tocdo == tb.tocdo;
 	}
 	
 	public String toString() {

@@ -23,6 +23,8 @@ public class SDThueBaoInternet implements Serializable {
 			ds[i].hienthi();
 		}
 		
+		
+		//hien thi thue bao co tien cuoc cao nhat
 		ThueBaoInternet temp = new ThueBaoInternet();
 		int max = ds[0].tocdo();
 		for(int i = 1; i < n; i++) {
@@ -34,6 +36,8 @@ public class SDThueBaoInternet implements Serializable {
 		System.out.println("Thue bao co tien cuoc hang thang cao nhat la: ");
 		temp.hienthi();
 		
+		
+		//hien thi tong tien cuoc se thu
 		long total = 0;
 		for(int i = 0; i < n; i++) {
 			total += ds[i].tinhCuoc();
@@ -41,6 +45,7 @@ public class SDThueBaoInternet implements Serializable {
 		System.out.println("Tong tien se thu duoc cua danh sach thue bao la: " + total);
 		
 		
+		//hien thi thue bao co thoi gian su dung lau nhat
 		ThueBaoInternet tempmax = new ThueBaoInternet();
 		int maxyear = ds[0].layNamDangKy();
 		int maxmonth = ds[0].layThangDangKy();
@@ -60,6 +65,8 @@ public class SDThueBaoInternet implements Serializable {
 		System.out.println("Thue bao da su dung dich vu lau nhat la: ");
 		tempmax.hienthi();
 		
+		
+		//tim kiem thong tin khach hang tu so ID
 		String tempID;
 		System.out.println("Nhap so CCCD / CMND khach hang can tim: ");
 		tempID = sc.nextLine();
@@ -70,6 +77,8 @@ public class SDThueBaoInternet implements Serializable {
 			}
 		}
 		
+		
+		//ghi file
 		FileOutputStream f = new FileOutputStream("thuebao.ser");
 		ObjectOutputStream ous = new ObjectOutputStream(f);
 		ous.writeObject(a);
