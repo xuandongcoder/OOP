@@ -52,7 +52,7 @@ public class ThueBaoInternet implements Serializable {
 		ngaydk.nhap();
 		while(true) {
 			System.out.println("Nhap goi cuoc muon dang ky: ");
-			System.out.println("Cac goi cuoc gom: 60; 80; 110; 140; 250" + tocdo);
+			System.out.println("Cac goi cuoc gom: 60; 80; 110; 140; 250");
 			tocdo = sc.nextInt();
 			if(tocdo == 60 || tocdo == 80 || tocdo == 110 || tocdo == 140 || tocdo == 250) {
 				break;
@@ -74,8 +74,8 @@ public class ThueBaoInternet implements Serializable {
 		System.out.println("Dia chi thue bao: " + diachi);
 		System.out.println("Ngay dang ky: ");
 		ngaydk.hienThi();
-		System.out.println("\nGoi cuoc da dang ky: " + tocdo + "\n\n\n");
-
+		System.out.println("\nGoi cuoc da dang ky: " + tocdo + "Mbps");
+		System.out.println("So tien hang thang: " + tinhCuoc() + "VND" + "\n");
 	}
 	
 	public int tinhCuoc() {
@@ -110,18 +110,24 @@ public class ThueBaoInternet implements Serializable {
 				"So CCCD / CMND: " + soID + "Dia chi thue bao: " + diachi + 
 				"Goi cuoc da dang ky: " + tocdo + "Ngay dang ky: " + ngaydk + "\n";
 	}
+	public String hoten(){
+		return layHoten();
+	}
 	public int tocdo() {
 		return layTocdo();
 	}
-	public int layNgayDangKy() {
-		return ngaydk.giaTriNgay();
+	public MyDate layNgayDangKy() {
+		return ngaydk;
 	}
-	public int layThangDangKy() {
-		return ngaydk.giaTriThang();
+	/*
+	 * public MyDate layThangDangKy() {
+		ngaydk.giaTriThang();
 	}
-	public int layNamDangKy() {
-		return ngaydk.giaTriNam();
+	public MyDate layNamDangKy() {
+		ngaydk.giaTriNam();
 	}
+	 */
+	
 	public String layTaikhoan() {
 		return tenTK;
 	}

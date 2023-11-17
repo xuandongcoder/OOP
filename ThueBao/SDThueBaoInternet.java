@@ -14,11 +14,13 @@ public class SDThueBaoInternet implements Serializable {
 		ThueBaoInternet a = new ThueBaoInternet();
 		a.nhap();
 		a.hienthi();
-		System.out.println("\n\nNhap so luong thue bao: ");
+		System.out.println("______________________________________________________");
+		System.out.println("\n\nNhap so luong thue bao trong danh sach: ");
 		n = sc.nextInt();
 		ThueBaoInternet ds[] = new ThueBaoInternet[n];
 		for(int i = 0; i < n; i++) {
 			ds[i] = new ThueBaoInternet();
+			System.out.println("Nhap thong tin cho thue bao thu " + (i+1));
 			ds[i].nhap();
 			ds[i].hienthi();
 		}
@@ -27,45 +29,48 @@ public class SDThueBaoInternet implements Serializable {
 		//hien thi thue bao co tien cuoc cao nhat
 		ThueBaoInternet tempsp = new ThueBaoInternet();
 		int max = ds[0].tocdo();
+		System.out.println("______________________________________________________");
 		for(int i = 1; i < n; i++) {
 			if(max < ds[i].tocdo()) {
 				max = ds[i].tocdo();
 				tempsp = ds[i];
+				System.out.println("Thue bao co tien cuoc hang thang cao nhat la: ");
+				tempsp.hienthi();
 			}
+			
 		}
-		System.out.println("Thue bao co tien cuoc hang thang cao nhat la: ");
-		tempsp.hienthi();
 		
 		
+		System.out.println("______________________________________________________");
 		//hien thi tong tien cuoc se thu
 		long total = 0;
-		for(int j = 0; j < n; j++) {
-			total += ds[j].tinhCuoc();
+		for(int i = 0; i < n; i++) {
+			total += ds[i].tinhCuoc();
 		}
-		System.out.println("Tong tien se thu duoc cua danh sach thue bao la: " + total);
+		System.out.println("\n\n\nTong tien se thu duoc cua danh sach thue bao la: " + total);
 		
-		
+		System.out.println("______________________________________________________");
 		//hien thi thue bao co thoi gian su dung lau nhat
-	for(int p = 0; p < n; p++) {
-		for(int q = p + 1; q < n; q++) {
-			if(ds[p].layNamDangKy() > ds[q].layNamDangKy()) {
-				ThueBaoInternet temp = ds[q];
-				ds[q] = ds[p];
-				ds[p] = temp;
+	for(int i = 0; i < n; i++) {
+		for(int j = i + 1; j < n; j++) {
+			if(ds[i].layNgayDangKy().giaTriNam() > ds[j].layNgayDangKy().giaTriNam()) {
+				ThueBaoInternet temp = ds[j];
+				ds[j] = ds[i];
+				ds[i] = temp;
 			}
 			else {
-				if(ds[p].layNamDangKy() == ds[q].layNamDangKy()) {
-					if(ds[p].layThangDangKy() > ds[q].layThangDangKy()) {
-						ThueBaoInternet temp = ds[q];
-						ds[q] = ds[p];
-						ds[p] = temp;
+				if(ds[i].layNgayDangKy().giaTriNam() == ds[j].layNgayDangKy().giaTriNam()) {
+					if(ds[i].layNgayDangKy().giaTriThang() > ds[j].layNgayDangKy().giaTriThang()) {
+						ThueBaoInternet temp = ds[j];
+						ds[j] = ds[i];
+						ds[i] = temp;
 					}
 					else {
-						if(ds[p].layThangDangKy() == ds[q].layThangDangKy()) {
-							if(ds[p].layNgayDangKy() > ds[q].layNgayDangKy()) {
-								ThueBaoInternet temp = ds[q];
-								ds[q] = ds[p];
-								ds[p] = temp;
+						if(ds[i].layNgayDangKy().giaTriThang() == ds[j].layNgayDangKy().giaTriThang()) {
+							if(ds[i].layNgayDangKy().giaTriNgay() > ds[j].layNgayDangKy().giaTriNgay()) {
+								ThueBaoInternet temp = ds[j];
+								ds[j] = ds[i];
+								ds[i] = temp;
 							}
 						}
 					}
@@ -73,7 +78,7 @@ public class SDThueBaoInternet implements Serializable {
 			}
 		}
 	}
-	System.out.println("\nDanh sach sau khi sap xep: ");
+	System.out.println("\nDanh sach sau khi sap xep theo ngay tang dan: ");
 	for(int i = 0; i < n; i++) {
 		System.out.println("\nThue bao thu " + (i+1));
 		ds[i].hienthi();
@@ -84,8 +89,8 @@ public class SDThueBaoInternet implements Serializable {
 		String tempID;
 		ThueBaoInternet tempid = new ThueBaoInternet();
 		tempid.timID();
+		System.out.println("______________________________________________________");
 		tempID = tempid.layCancuoc();
-		
 		for(int l = 0; l < n; l++) {
 			if(ds[l].layCancuoc().compareTo(tempID) == 0) {
 				System.out.println("Thong tin khach hang can tim la: ");
@@ -95,14 +100,17 @@ public class SDThueBaoInternet implements Serializable {
 		
 		
 		//hien thi nguoi dang ky nhieu tai khoan nhat
+		System.out.println("______________________________________________________");
 		String Mulreg;
-		ThueBaoInternet mulreg = new ThueBaoInternet();
-		Mulreg = ds[0].layHoten();
 		for(int h = 0; h < n; h++) {
-			if(ds[h].layHoten().compareTo(Mulreg) == 0) {
-				System.out.println("Thong tin khach hang nhieu tai khoan nhat can tim la: ");
-				ds[h].hienthi();
+			Mulreg = ds[h].hoten();
+			for(int k = h+1; k < n; k++){
+				if(ds[k].hoten().compareTo(Mulreg) == 0) {
+				System.out.println("Khach hang nhieu tai khoan nhat can tim la: " + ds[k].hoten());
+				ds[k].hienthi();
 			}
+			}
+			
 		}
 		
 		
@@ -113,6 +121,7 @@ public class SDThueBaoInternet implements Serializable {
 		ous.writeObject(ds);
 		ous.flush();
 		ous.close();
+		System.out.println("______________________________________________________");
 		System.out.println("Da ghi file thanh cong!!!");
 	}
 	catch(FileNotFoundException e) {
