@@ -25,55 +25,83 @@ public class SDThueBaoInternet implements Serializable {
 		
 		
 		//hien thi thue bao co tien cuoc cao nhat
-		ThueBaoInternet temp = new ThueBaoInternet();
+		ThueBaoInternet tempsp = new ThueBaoInternet();
 		int max = ds[0].tocdo();
 		for(int i = 1; i < n; i++) {
 			if(max < ds[i].tocdo()) {
 				max = ds[i].tocdo();
-				temp = ds[i];
+				tempsp = ds[i];
 			}
 		}
 		System.out.println("Thue bao co tien cuoc hang thang cao nhat la: ");
-		temp.hienthi();
+		tempsp.hienthi();
 		
 		
 		//hien thi tong tien cuoc se thu
 		long total = 0;
-		for(int i = 0; i < n; i++) {
-			total += ds[i].tinhCuoc();
+		for(int j = 0; j < n; j++) {
+			total += ds[j].tinhCuoc();
 		}
 		System.out.println("Tong tien se thu duoc cua danh sach thue bao la: " + total);
 		
 		
 		//hien thi thue bao co thoi gian su dung lau nhat
-		ThueBaoInternet tempmax = new ThueBaoInternet();
-		int maxyear = ds[0].layNamDangKy();
-		int maxmonth = ds[0].layThangDangKy();
-		int maxday = ds[0].layNgayDangKy();
-		for(int i = 0; i < n; i++) {
-			if(ds[i].layNamDangKy() < maxyear) {
-				maxyear = ds[i].layNamDangKy();
-				if(ds[i].layThangDangKy() > maxmonth) {
-					maxmonth = ds[i].layThangDangKy();
-					if(ds[i].layNgayDangKy() > maxday) {
-						maxday = ds[i].layNgayDangKy();
-						tempmax = ds[i];
+	for(int p = 0; p < n; p++) {
+		for(int q = p + 1; q < n; q++) {
+			if(ds[p].layNamDangKy() > ds[q].layNamDangKy()) {
+				ThueBaoInternet temp = ds[q];
+				ds[q] = ds[p];
+				ds[p] = temp;
+			}
+			else {
+				if(ds[p].layNamDangKy() == ds[q].layNamDangKy()) {
+					if(ds[p].layThangDangKy() > ds[q].layThangDangKy()) {
+						ThueBaoInternet temp = ds[q];
+						ds[q] = ds[p];
+						ds[p] = temp;
+					}
+					else {
+						if(ds[p].layThangDangKy() == ds[q].layThangDangKy()) {
+							if(ds[p].layNgayDangKy() > ds[q].layNgayDangKy()) {
+								ThueBaoInternet temp = ds[q];
+								ds[q] = ds[p];
+								ds[p] = temp;
+							}
+						}
 					}
 				}
 			}
 		}
-		System.out.println("Thue bao da su dung dich vu lau nhat la: ");
-		tempmax.hienthi();
+	}
+	System.out.println("\nDanh sach sau khi sap xep: ");
+	for(int i = 0; i < n; i++) {
+		System.out.println("\nThue bao thu " + (i+1));
+		ds[i].hienthi();
+	}
 		
 		
 		//tim kiem thong tin khach hang tu so ID
 		String tempID;
-		System.out.println("Nhap so CCCD / CMND khach hang can tim: ");
-		tempID = sc.nextLine();
-		for(int i = 0; i < n; i++) {
-			if(ds[i].layCancuoc().compareTo(tempID) == 0) {
+		ThueBaoInternet tempid = new ThueBaoInternet();
+		tempid.timID();
+		tempID = tempid.layCancuoc();
+		
+		for(int l = 0; l < n; l++) {
+			if(ds[l].layCancuoc().compareTo(tempID) == 0) {
 				System.out.println("Thong tin khach hang can tim la: ");
-				ds[i].hienthi();
+				ds[l].hienthi();
+			}
+		}
+		
+		
+		//hien thi nguoi dang ky nhieu tai khoan nhat
+		String Mulreg;
+		ThueBaoInternet mulreg = new ThueBaoInternet();
+		Mulreg = ds[0].layHoten();
+		for(int h = 0; h < n; h++) {
+			if(ds[h].layHoten().compareTo(Mulreg) == 0) {
+				System.out.println("Thong tin khach hang nhieu tai khoan nhat can tim la: ");
+				ds[h].hienthi();
 			}
 		}
 		

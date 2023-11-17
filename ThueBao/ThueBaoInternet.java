@@ -60,6 +60,12 @@ public class ThueBaoInternet implements Serializable {
 				System.out.println("Nhap sai goi cuoc!! - Vui long nhap lai!!!");
 		}
 }
+	public void timID() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Nhap so CCCD / CMND can tim: ");
+		soID = sc.nextLine();
+	}
+	
 
 	public void hienthi() {
 		System.out.println("Ten tai khoan: " + tenTK);
